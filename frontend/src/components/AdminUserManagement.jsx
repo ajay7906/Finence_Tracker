@@ -68,8 +68,37 @@ const AdminUserManagement = () => {
     }
   };
 
-  const deleteUser = async (userId) => {
-    if (!window.confirm("Are you sure you want to delete this user?")) return;
+//   const deleteUser = async (userId) => {
+//     if (!window.confirm("Are you sure you want to delete this user?")) return;
+    
+//     try {
+//       await axios.delete(
+//         `https://finence-tracker-2.onrender.com/api/users/delete/${userId}`,
+//         { withCredentials: true }
+//       );
+      
+//       setSuccess("User deleted successfully");
+//       fetchUsers(); // Refresh the user list
+      
+//       // Clear success message after 3 seconds
+//       setTimeout(() => setSuccess(""), 3000);
+//     } catch (err) {
+//       setError(err.response?.data?.msg || "Error deleting user");
+//     }
+//   };
+
+
+
+const deleteUser = async (userId, event) => {
+    // Prevent any default behavior that might interfere
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    // Use a more modern confirmation dialog approach
+    const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+    if (!isConfirmed) return;
     
     try {
       await axios.delete(
@@ -86,6 +115,15 @@ const AdminUserManagement = () => {
       setError(err.response?.data?.msg || "Error deleting user");
     }
   };
+
+
+
+
+
+
+
+
+
 
   const cancelEdit = () => {
     setEditingUser(null);
@@ -235,7 +273,7 @@ const AdminUserManagement = () => {
                           Edit
                         </button>
                         <button
-                          onClick={() => deleteUser(userItem._id)}
+                          onClick={() => deleteUser(userItem._id, e)}
                           className="px-3 py-1 bg-red-600 text-white rounded-lg text-sm hover:bg-red-700 transition-colors"
                           disabled={userItem._id === user._id}
                         >
