@@ -5,7 +5,7 @@ import { authenticate, requireRole } from "../middleware/auth.js";
 const router = express.Router();
 
 // GET /api/users - Get all users (admin only)
-router.get("/", authenticate, requireRole("admin"), async (req, res) => {
+router.get("/get", authenticate, requireRole("admin"), async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT id, email, role, created_at FROM users ORDER BY created_at DESC"
@@ -23,7 +23,7 @@ router.get("/", authenticate, requireRole("admin"), async (req, res) => {
 });
 
 // GET /api/users/:id - Get specific user (admin only)
-router.get("/:id", authenticate, requireRole("admin"), async (req, res) => {
+router.get("get/:id", authenticate, requireRole("admin"), async (req, res) => {
   try {
     const { id } = req.params;
     
@@ -51,7 +51,7 @@ router.get("/:id", authenticate, requireRole("admin"), async (req, res) => {
 });
 
 // PUT /api/users/:id - Update user (admin only)
-router.put("/:id", authenticate, requireRole("admin"), async (req, res) => {
+router.put("update/:id", authenticate, requireRole("admin"), async (req, res) => {
   try {
     const { id } = req.params;
     const { email, role } = req.body;
@@ -119,7 +119,7 @@ router.put("/:id", authenticate, requireRole("admin"), async (req, res) => {
 });
 
 // DELETE /api/users/:id - Delete user (admin only)
-router.delete("/:id", authenticate, requireRole("admin"), async (req, res) => {
+router.delete("delete/:id", authenticate, requireRole("admin"), async (req, res) => {
   try {
     const { id } = req.params;
     
