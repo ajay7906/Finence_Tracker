@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`http://localhost:3000/api/auth/login`, {
+      const res = await axios.post(`https://finence-tracker-2.onrender.com/api/auth/login`, {
         email,
         password,
       }, {withCredentials: true});
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password, role) => {
     try {
-      const res = await axios.post(`http://localhost:3000/api/auth/register`, {
+      const res = await axios.post(`https://finence-tracker-2.onrender.com/api/auth/register`, {
         email,
         password,
         role,
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async() => {
     localStorage.removeItem("token");
-    await axios.put(`http://localhost:3000/api/auth/logout`, {}, {withCredentials: true});
+    await axios.put(`https://finence-tracker-2.onrender.com/api/auth/logout`, {}, {withCredentials: true});
     delete axios.defaults.headers.common["Authorization"];
     
     setUser(null);

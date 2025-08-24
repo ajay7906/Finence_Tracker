@@ -32,7 +32,7 @@ const TransactionForm = ({ onTransactionAdded }) => {
     setError('');
 
     try {
-      await axios.post(`http://localhost:3000/api/transactions`, formData, {withCredentials: true});
+      await axios.post(`https://finence-tracker-2.onrender.com/api/transactions`, formData, {withCredentials: true});
       setFormData({ 
         amount: '', 
         category: '', 

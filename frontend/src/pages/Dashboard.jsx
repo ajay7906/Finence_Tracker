@@ -21,7 +21,7 @@
 //   const fetchAnalytics = async () => {
 //     try {
 //       setLoading(true);
-//       const res = await axios.get(`http://localhost:3000/api/analytics`, {
+//       const res = await axios.get(`https://finence-tracker-2.onrender.com/api/analytics`, {
 //         withCredentials: true,
 //       });
 //       setAnalytics(res.data);
@@ -381,7 +381,7 @@ const Dashboard = () => {
   const fetchAnalytics = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:3000/api/analytics`, {
+      const res = await axios.get(`https://finence-tracker-2.onrender.com/api/analytics`, {
         withCredentials: true,
       });
       setAnalytics(res.data);

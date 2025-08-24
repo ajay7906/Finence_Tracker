@@ -41,7 +41,7 @@ const TransactionList = ({fetchAnalytics}) => {
         if (value) params.append(key, value);
       });
 
-      const res = await axios.get(`http://localhost:3000/api/transactions?${params}`);
+      const res = await axios.get(`https://finence-tracker-2.onrender.com/api/transactions?${params}`);
       
       if (res.data && res.data.transactions) {
         setTransactions(res.data.transactions);
@@ -69,7 +69,7 @@ const TransactionList = ({fetchAnalytics}) => {
 
     try {
       setDeletingId(id);
-      await axios.delete(`http://localhost:3000/api/transactions/${id}`);
+      await axios.delete(`https://finence-tracker-2.onrender.com/api/transactions/${id}`);
       fetchTransactions();
       fetchAnalytics()
     } catch (err) {
@@ -99,7 +99,7 @@ const TransactionList = ({fetchAnalytics}) => {
 
   const handleEditSubmit = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/api/transactions/${id}`, editForm);
+      await axios.put(`https://finence-tracker-2.onrender.com/api/transactions/${id}`, editForm);
       setEditingId(null);
       fetchTransactions();
       fetchAnalytics()
