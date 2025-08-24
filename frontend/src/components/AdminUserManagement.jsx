@@ -23,7 +23,7 @@ const AdminUserManagement = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`https://finence-tracker-2.onrender.com/api/users`, {
+      const res = await axios.get(`https://finence-tracker-2.onrender.com/api/users/get`, {
         withCredentials: true,
       });
       setUsers(res.data);
@@ -52,7 +52,7 @@ const AdminUserManagement = () => {
   const updateUser = async (userId) => {
     try {
       const res = await axios.put(
-        `https://finence-tracker-2.onrender.com/api/users/${userId}`,
+        `https://finence-tracker-2.onrender.com/api/users/update/${userId}`,
         editForm,
         { withCredentials: true }
       );
@@ -73,7 +73,7 @@ const AdminUserManagement = () => {
     
     try {
       await axios.delete(
-        `https://finence-tracker-2.onrender.com/api/users/${userId}`,
+        `https://finence-tracker-2.onrender.com/api/users/delete/${userId}`,
         { withCredentials: true }
       );
       

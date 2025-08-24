@@ -250,7 +250,7 @@ const Dashboard = () => {
         <div>
           <TransactionList fetchAnalytics={fetchAnalytics} />
         </div>
-        // Then inside your Dashboard component's return statement
+       
         {user && user.role === "admin" && (
           <div className="mb-8">
             <AdminUserManagement />
