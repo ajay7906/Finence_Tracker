@@ -25,9 +25,10 @@
 import pg from "pg";
 
 const { Pool } = pg;
+// postgresql://postgres.cjmfzhujlbqbysksjpqh:Ajay7906.com@aws-1-ap-south-1.pooler.supabase.com:5432/postgres
 
 const pool = new Pool({
-  connectionString: 'postgresql://postgres:Ajay7906.com@db.cjmfzhujlbqbysksjpqh.supabase.co:5432/postgres?sslmode=require',
+  connectionString: 'postgresql://postgres.cjmfzhujlbqbysksjpqh:Ajay7906.com@aws-1-ap-south-1.pooler.supabase.com:5432/postgres',
   ssl: {
     rejectUnauthorized: false, // Supabase requires SSL
   },
