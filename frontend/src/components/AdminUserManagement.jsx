@@ -97,7 +97,7 @@ const deleteUser = async (userId, event) => {
     }
     
     // Use a more modern confirmation dialog approach
-    const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+    const isConfirmed = alert('Are you sure you want to delete this user? This action cannot be undone.');
     if (!isConfirmed) return;
     
     try {
