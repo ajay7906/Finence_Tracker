@@ -178,7 +178,7 @@
 
 import express from "express";
 import { pool } from "../config/database.js";
-import { authenticate, requireRole } from "../middleware/auth.js";
+import { authenticate, requireRole } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
