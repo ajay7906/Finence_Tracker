@@ -234,7 +234,8 @@ router.get("/get", authenticate, requireRole("admin"), async (req, res) => {
     res.status(500).json({ 
       success: false,
       msg: "Failed to fetch users", 
-      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error"
+      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error",
+      err: `${err.message} - Internal server error ${err}` // Include error message for development
     });
   }
 });
@@ -262,7 +263,8 @@ router.get("/get/:id", authenticate, requireRole("admin"), async (req, res) => {
     res.status(500).json({ 
       success: false,
       msg: "Failed to fetch user", 
-      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error"
+      error: process.env.NODE_ENV === "development" ? err.message : `${err.message} - Internal server error`,
+      err: `${err.message}` // Include error message for development
     });
   }
 });
@@ -330,7 +332,8 @@ router.put("/update/:id", authenticate, requireRole("admin"), async (req, res) =
     res.status(500).json({ 
       success: false,
       msg: "Failed to update user", 
-      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error"
+      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error",
+      err: `${err.message}`
     });
   }
 });
@@ -373,7 +376,8 @@ router.delete("/delete/:id", authenticate, requireRole("admin"), async (req, res
     res.status(500).json({ 
       success: false,
       msg: "Failed to delete user", 
-      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error"
+      error: process.env.NODE_ENV === "development" ? err.message : "Internal server error",
+      err: `${err.message}`
     });
   }
 });
