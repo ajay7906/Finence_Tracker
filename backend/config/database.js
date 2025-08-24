@@ -27,7 +27,7 @@ import pg from "pg";
 const { Pool } = pg;
 
 const pool = new Pool({
-  connectionString: 'postgresql://postgres:Ajay7906.com@db.cjmfzhujlbqbysksjpqh.supabase.co:5432/postgres',
+  connectionString: process.env.DATABASE,
   ssl: {
     rejectUnauthorized: false, // Supabase requires SSL
   },
