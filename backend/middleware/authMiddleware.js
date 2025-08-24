@@ -25,4 +25,26 @@ const authorize = (roles = []) => {
   };
 };
 
-export { authenticate, authorize };
+
+// Role-based access control middleware
+ const requireRole = (role) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ 
+        success: false,
+        msg: "Authentication required" 
+      });
+    }
+    
+    if (req.user.role !== role && req.user.role !== "admin") {
+      return res.status(403).json({ 
+        success: false,
+        msg: "Insufficient permissions" 
+      });
+    }
+    
+    next();
+  };
+};
+
+export { authenticate, authorize, requireRole };

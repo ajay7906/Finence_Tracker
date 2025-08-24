@@ -17,6 +17,7 @@ import { pool } from "./config/database.js";
 import authRouter from "./routes/auth.route.js";
 import analyticsRouter from "./routes/analyticsRoutes.route.js";
 import transactionRouter from "./routes/transactionRoutes.route.js";
+import userRouter from "./routes/users.js";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -39,6 +40,7 @@ redisClient.on("error", (err) => console.error("Redis error:", err));
 app.use("/api/auth", authRouter);
 app.use("/api/analytics", analyticsRouter);
 app.use("/api/transactions", transactionRouter);
+app.use("/api/users", userRouter);
 
 // ✅ PostgreSQL connection check
 pool.connect()
